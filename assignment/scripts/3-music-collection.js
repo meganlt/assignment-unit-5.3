@@ -2,28 +2,33 @@ console.log('***** Music Collection *****')
 // Safe Zone -- Write code below this line
 let myCollection = [];
 
-function addToCollection( collection, title, artist, yearPublished ){
+function addToCollection( collection, title, artist, yearPublished, tracks ){
   let newAlbum = {
     title: title,
     artist: artist,
-    yearPublished: yearPublished
+    yearPublished: yearPublished,
+    tracks: tracks
   }
   collection.push(newAlbum);
+  console.log(newAlbum);
   return newAlbum;
 }
 
-console.log(addToCollection( myCollection, 'Volcano', 'Jungle', 2023 ));
-console.log(addToCollection( myCollection, 'ForEver', 'Jungle', 2018 ));
-console.log(addToCollection( myCollection, 'Lust for Life', 'Lana Del Rey', 2017 ));
-console.log(addToCollection( myCollection, 'Random Access Memories', 'Daft Punk', 2013 ));
-console.log(addToCollection( myCollection, 'Paradise', 'Lana Del Rey', 2012 ));
-console.log(addToCollection( myCollection, 'Rumours', 'Fleetwood Mac', 1977 ));
+addToCollection( myCollection, 'Volcano', 'Jungle', 2023, [{ trackName: 'Us Against The World', duration: '3:27'}, {trackName: 'Holding On', duration: '3:16'}, { trackName: 'Back on 74', duration: '3:29'}]);
+addToCollection( myCollection, 'ForEver', 'Jungle', 2018, [{ trackName: 'Smile', duration: '3:07'}, {trackName: 'Heavy, California', duration: '3:04'}] );
+addToCollection( myCollection, 'Lust for Life', 'Lana Del Rey', 2017, [{ trackName: 'Something', duration: '3:14'}] );
+addToCollection( myCollection, 'Random Access Memories', 'Daft Punk', 2013, [{ trackName: 'Something', duration: '3:14'}] );
+addToCollection( myCollection, 'Paradise', 'Lana Del Rey', 2012, [{ trackName: 'Something', duration: '3:14'}] );
+addToCollection( myCollection, 'Rumours', 'Fleetwood Mac', 1977, [{ trackName: 'Something', duration: '3:14'}] );
 console.log( 'My Collection:', myCollection );
 
 function showCollection( collection ){
   for( let i=0; i<collection.length; i++ ){
     let newString = collection[i].title + ' by ' + collection[i].artist + ', published in year ' + collection[i].yearPublished;
     console.log( newString );
+    for( let j=0; j<collection[i].tracks.length; j++){
+      console.log( j + 1 + '.', collection[i].tracks[j].trackName + ': ' + collection[i].tracks[j].duration);
+    }
   }
 } // end func
 showCollection(myCollection);
